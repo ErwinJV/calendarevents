@@ -16,6 +16,7 @@ function calendar_metaboxes_html($post)
         <input type="datetime-local" 
                name="<?php echo START_DATE; ?>" 
                id="<?php echo START_DATE; ?>" 
+               value="<?php echo esc_attr($start_date); ?>" 
         />
     </div>
 
@@ -26,6 +27,7 @@ function calendar_metaboxes_html($post)
         <input type="datetime-local" 
                name="<?php echo END_DATE; ?>" 
                id="<?php echo END_DATE; ?>" 
+               value="<?php echo esc_attr($end_date); ?>" 
         />
     </div>
     <style>
