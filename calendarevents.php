@@ -42,13 +42,6 @@ $enqueue_scripts = new EnqueueScript([
 ]);
 $enqueue_scripts->run();
 
-$register_cpt = new RegisterPostType([
-   'event'=>[
-      "plural"=>"events",
-      "icon"=>"dashicons-clock"
-   ],
-]);
-$register_cpt->run();
 
 // $taxonomy = new PluginRegisterTaxonomy([
 //    'events'=>[
