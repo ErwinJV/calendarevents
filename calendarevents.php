@@ -8,7 +8,6 @@
  */
 
 use plugin\php\actions\EnqueueScript;
-use plugin\php\actions\RegisterPostType;
 use plugin\php\Plugin;
 
 $dir_path = WP_PLUGIN_DIR .'/calendarevents';
@@ -20,6 +19,8 @@ define('PLUGIN_SITE_NAME',get_bloginfo('name'));
 
 require_once PLUGIN_PATH . '/plugin/php/shortcodes/calendar_posts_shortcode.php';
 require_once PLUGIN_PATH . '/plugin/php/metaboxes/calendar_metaboxes.php';
+require_once PLUGIN_PATH . '/plugin/php/api/calendar.php';
+
 
  spl_autoload_register(function (string $className) {
    $path = str_replace('\\', '/', $className);
