@@ -5,18 +5,21 @@ function get_calendar_posts_metadata()
     global $wpdb;
     try
     {
-        $query = "SELECT ID,post_name FROM {$wpdb->prefix}posts";
+        $query = "SELECT ID,post_name FROM {$wpdb->prefix}posts WHERE post_status = 'publish'";
         $posts = $wpdb->get_results($query,ARRAY_A);
         $calendar_metaboxes =[];
         foreach($posts as $post)
         {
           $start_date = get_post_meta($post['ID'],'start_date',true);
           $end_date = get_post_meta($post['ID'],'end_date',true);
-          $calendar_metaboxes = [...$calendar_metaboxes,[
-               'post_name'=>$post['post_name'],
-               'start_date'=>$start_date,
-               'end_date'=>$end_date
-          ]];
+          if($start_date && $end_date){
+            $calendar_metaboxes = [...$calendar_metaboxes,[
+                'post_name'=>$post['post_name'],
+                'start_date'=>$start_date,
+                'end_date'=>$end_date
+           ]];
+          }
+         
         }
         return new WP_REST_Response(json_encode($calendar_metaboxes),200);
     }catch(Exception $e)
